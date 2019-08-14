@@ -3,6 +3,7 @@
 
 <head>
     <title>Mirror</title>
+    <meta name="description" content="Mirror for minimalist.">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,35 +14,42 @@
             margin: 0;
         }
 
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 
 <body>
     <script>
-        const width = 1024;
-        const height = 768;
+        const width = 1020;
+        const height = 760;
+        let interval = 20;
 
         function setup() {
             createCanvas(width, height);
             img = createCapture(VIDEO);
             img.hide();
             img.size(width, height);
+
         }
 
         function draw() {
             background(255);
             img.loadPixels();
-            for (var y = 0; y < img.height; y += 20) {
-                for (var x = 0; x < img.width; x += 20) {
+            for (let y = 0; y < img.height; y += interval) {
+                for (let x = 0; x < img.width; x += interval) {
                     let i = y * width + (img.width - x - 1);
                     let darkness = (255 - img.pixels[i * 4]) / 255;
                     let radius = 20 * darkness;
                     fill(0);
-                    ellipse(x, y, radius, radius);
+                    ellipse(x + interval / 2, y + interval / 2, radius, radius);
                 }
             }
         }
-
     </script>
 </body>
 
