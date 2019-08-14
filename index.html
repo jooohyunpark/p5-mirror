@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mirror</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <style>
+        body,
+        html {
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <script>
+        const width = 1024;
+        const height = 768;
+
+        function setup() {
+            createCanvas(width, height);
+            img = createCapture(VIDEO);
+            img.hide();
+            img.size(width, height);
+        }
+
+        function draw() {
+            background(255);
+            img.loadPixels();
+            for (var y = 0; y < img.height; y += 20) {
+                for (var x = 0; x < img.width; x += 20) {
+                    let i = y * width + (img.width - x - 1);
+                    let darkness = (255 - img.pixels[i * 4]) / 255;
+                    let radius = 20 * darkness;
+                    fill(0);
+                    ellipse(x, y, radius, radius);
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
