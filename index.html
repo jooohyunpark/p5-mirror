@@ -22,21 +22,22 @@
             transform: translate(-50%, -50%);
         }
 
-        .redirect {
+        .wrapper {
             position: absolute;
-            z-index: 100;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            z-index: 100;
             font-size: 18px;
             display: none;
         }
-
     </style>
 </head>
 
 <body>
-    <div class="redirect">Please try with desktop or laptop.</div>
+    <div class="wrapper">
+        <div class="redirect">Please try with desktop or laptop. Please try with desktop or laptop. Please try with desktop or laptop.</div>
+    </div>
     <script>
         const width = 1020;
         const height = 760;
@@ -69,7 +70,7 @@
         }
 
         if (isMobile.phone || isMobile.tablet) {
-            document.querySelector('.redirect').style.display = 'block';
+            document.querySelector('.wrapper').style.display = 'block';
         }
     </script>
 </body>
