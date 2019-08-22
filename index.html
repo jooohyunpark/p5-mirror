@@ -56,7 +56,11 @@
             for (let y = 0; y < img.height; y += interval) {
                 for (let x = 0; x < img.width; x += interval) {
                     let i = y * width + (img.width - x - 1);
-                    let darkness = (255 - img.pixels[i * 4]) / 255;
+                    // let darkness = (255 - img.pixels[i * 4]) / 255;
+                    let r = (255 - img.pixels[i * 4]) / 255;
+                    let g = (255 - img.pixels[i * 4 + 1]) / 255;
+                    let b = (255 - img.pixels[i * 4 + 2]) / 255;
+                    let darkness = (r + g + b) / 3;
                     let radius = 20 * darkness;
                     fill(0);
                     ellipse(x + interval / 2, y + interval / 2, radius, radius);
@@ -67,7 +71,6 @@
         if (isMobile.phone || isMobile.tablet) {
             document.querySelector('.redirect').style.display = 'block';
         }
-
     </script>
 </body>
 
