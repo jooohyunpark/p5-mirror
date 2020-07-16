@@ -1,1 +1,1 @@
-[* * *](https://jooohyunpark.github.io/mirror/)
+mirror.
