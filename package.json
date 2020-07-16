@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "dev": "webpack-dev-server --open --watch",
+    "dev": "webpack-dev-server --open",
     "format": "eslint --fix ./src",
     "preview": "yarn build && http-server dist -o"
   },
