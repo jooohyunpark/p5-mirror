@@ -10,7 +10,7 @@ const mirror = _p5 => {
   let img
 
   _p5.setup = () => {
-    _p5.frameRate(30)
+    _p5.frameRate(20)
     _p5.createCanvas(width, height)
     _p5.noStroke()
     _p5.rectMode(_p5.CENTER)
@@ -31,15 +31,12 @@ const mirror = _p5 => {
         const r = img.pixels[i * 4]
         const g = img.pixels[i * 4 + 1]
         const b = img.pixels[i * 4 + 2]
-        const darkness = (r + g + b) / (255 * 3)
+        const darkness = 1 - ((r + g + b) / (255 * 3))
         const radius = interval * 1 * Math.pow(darkness, 2)
 
-        const max = Math.max(r, g, b)
-        const rr = r === max ? max : 0
-        const gg = g === max ? max : 0
-        const bb = b === max ? max : 0
+        const color = _p5.map(darkness, 0, 1, 0, 255);
 
-        _p5.fill(r, g, b)
+        _p5.fill(color)
         _p5.rect(x + interval / 2, y + interval / 2, radius, radius)
         // _p5.ellipse(x + interval / 2, y + interval / 2, radius, radius)
       }
