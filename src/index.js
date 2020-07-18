@@ -3,10 +3,10 @@ import * as p5 from 'p5'
 
 const params = new URLSearchParams(window.location.search)
 
-const size = Number(params.get('s')) || 300
+const size = Number(params.get('size')) || 300
 const width = size * 4
 const height = size * 3
-const radius = Number(params.get('r')) || 30
+const radius = Number(params.get('radius')) || 30
 
 const mirror = _p5 => {
   let img
@@ -34,7 +34,7 @@ const mirror = _p5 => {
         const g = img.pixels[i * 4 + 1]
         const b = img.pixels[i * 4 + 2]
         const darkness = 1 - (r + g + b) / (255 * 3)
-        const _radius = radius * 1 * Math.pow(darkness, 2)
+        const _radius = radius * Math.pow(darkness, 2)
         const color = _p5.map(darkness, 0, 1, 0, 255)
 
         _p5.fill(color)
