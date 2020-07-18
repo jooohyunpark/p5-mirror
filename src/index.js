@@ -31,10 +31,10 @@ const mirror = _p5 => {
         const r = img.pixels[i * 4]
         const g = img.pixels[i * 4 + 1]
         const b = img.pixels[i * 4 + 2]
-        const darkness = 1 - ((r + g + b) / (255 * 3))
+        const darkness = 1 - (r + g + b) / (255 * 3)
         const radius = interval * 1 * Math.pow(darkness, 2)
 
-        const color = _p5.map(darkness, 0, 1, 0, 255);
+        const color = _p5.map(darkness, 0, 1, 0, 255)
 
         _p5.fill(color)
         _p5.rect(x + interval / 2, y + interval / 2, radius, radius)
